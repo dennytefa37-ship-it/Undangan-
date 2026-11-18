@@ -84,7 +84,7 @@
             pointer-events: none;
         }
 
-        /* Animasi Equalizer Musik Saxophone */
+        /* Animasi Equalizer Musik Rindik */
         @keyframes rindikBar {
             0%, 100% { height: 4px; }
             50% { height: 14px; }
@@ -181,11 +181,11 @@
     </div>
 
     <!-- =========================================================================
-         2. KONTROL MENGAMBANG: PEMUTAR INSTRUMENTAL SAXOPHONE & GENERATOR UNDANGAN WA
+         2. KONTROL MENGAMBANG: PEMUTAR BALI RINDIK & GENERATOR UNDANGAN WA
     ========================================================================== -->
-    <!-- Tombol Musik Instrumental Saxophone (Pojok Kiri Bawah) -->
+    <!-- Tombol musik MP3 (Pojok Kiri Bawah) -->
     <div class="fixed bottom-4 left-4 z-40">
-        <button id="btn-toggle-music" type="button" aria-label="Putar atau Jeda Musik Instrumental Saxophone" class="flex items-center gap-2.5 bg-sogan-dark/95 hover:bg-sogan text-ivory border border-gold-bright/70 shadow-xl px-3.5 py-2.5 rounded-full transition-all duration-300 cursor-pointer">
+        <button id="btn-toggle-music" type="button" aria-label="Putar atau Jeda Musik" class="flex items-center gap-2.5 bg-sogan-dark/95 hover:bg-sogan text-ivory border border-gold-bright/70 shadow-xl px-3.5 py-2.5 rounded-full transition-all duration-300 cursor-pointer">
             <div id="music-eq" class="flex items-end gap-[2px] h-4 w-4 justify-center">
                 <span class="eq-bar-1 w-[2.5px] h-1.5 bg-gold-bright rounded-full"></span>
                 <span class="eq-bar-2 w-[2.5px] h-3 bg-gold-bright rounded-full"></span>
@@ -193,10 +193,11 @@
                 <span class="eq-bar-4 w-[2.5px] h-2.5 bg-gold-bright rounded-full"></span>
             </div>
             <div class="text-left">
-                <span id="music-status-label" class="block font-sans text-[11px] font-semibold text-gold-bright leading-none">Saxophone: Jeda</span>
-                <span class="block font-sans text-[9px] text-ivory/70 leading-tight mt-0.5">Instrumental Saxophone</span>
+                <span id="music-status-label" class="block font-sans text-[11px] font-semibold text-gold-bright leading-none">Musik: Jeda</span>
+                <span class="block font-sans text-[9px] text-ivory/70 leading-tight mt-0.5">Semua Baik</span>
             </div>
         </button>
+        <audio id="invitation-music" src="semua-baik.mp3" loop preload="none"></audio>
     </div>
 
     <!-- Tombol Kirim Undangan WA / Isi Nama Tamu (Pojok Kanan Bawah) -->
@@ -585,51 +586,41 @@
 
     </main>
 
-
-    <audio id="saxophone-audio" src="semua-baik.mp3" preload="auto" loop></audio>
-
     <!-- =========================================================================
-         9. JAVASCRIPT: BALI RINDIK AUDIO SAXOPHONE, DINAMIS TAMU, COUNTDOWN & CANVAS
+         9. JAVASCRIPT: MUSIK MP3, DINAMIS TAMU, COUNTDOWN & CANVAS
     ========================================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // =================================================================
-            // A. PEMUTAR MUSIK INSTRUMENTAL SAXOPHONE (FILE MP3)
+            // A. PEMUTAR MUSIK MP3 UNDANGAN
+            //    File musik berada di repository yang sama: semua-baik.mp3
             // =================================================================
-            const saxophoneAudio = document.getElementById('saxophone-audio');
+            const musicAudio = document.getElementById('invitation-music');
             const musicButton = document.getElementById('btn-toggle-music');
             const musicLabel = document.getElementById('music-status-label');
 
-            function updateMusicUI(playing) {
+            function updateMusicUI() {
+                const playing = !musicAudio.paused;
                 musicButton.classList.toggle('music-playing', playing);
-                musicLabel.textContent = playing ? 'Saxophone: Putar' : 'Saxophone: Jeda';
+                musicLabel.textContent = playing ? 'Musik: Putar' : 'Musik: Jeda';
             }
 
-            async function playSaxophone() {
-                try {
-                    await saxophoneAudio.play();
-                    updateMusicUI(true);
-                } catch (err) {
-                    // Browser dapat memerlukan sentuhan pengguna untuk memulai audio.
-                    updateMusicUI(false);
-                    console.warn('Musik belum dapat diputar:', err);
-                }
-            }
-
-            function pauseSaxophone() {
-                saxophoneAudio.pause();
-                updateMusicUI(false);
-            }
-
-            musicButton.addEventListener('click', () => {
-                if (saxophoneAudio.paused) {
-                    playSaxophone();
+            musicButton.addEventListener('click', async () => {
+                if (musicAudio.paused) {
+                    try {
+                        await musicAudio.play();
+                    } catch (err) {
+                        console.warn('Musik belum dapat diputar:', err);
+                        musicLabel.textContent = 'Musik: Coba lagi';
+                    }
                 } else {
-                    pauseSaxophone();
+                    musicAudio.pause();
                 }
+                updateMusicUI();
             });
-
-            saxophoneAudio.addEventListener('ended', () => updateMusicUI(false));
+            musicAudio.addEventListener('play', updateMusicUI);
+            musicAudio.addEventListener('pause', updateMusicUI);
+            musicAudio.addEventListener('ended', updateMusicUI);
 
             // =================================================================
             // B. MANAJEMEN NAMA TAMU UNDANGAN DINAMIS (?to=Nama+Tamu / ?kepada=)
@@ -676,7 +667,10 @@
 
             btnOpenInv.addEventListener('click', () => {
                 coverOverlay.classList.add('is-opened');
-                playSaxophone();
+                musicAudio.play().then(updateMusicUI).catch(() => {
+                    // Jika browser menahan autoplay, tamu dapat menekan tombol musik.
+                    updateMusicUI();
+                });
 
                 setTimeout(() => {
                     document.querySelectorAll('.reveal-item').forEach((item, index) => {
@@ -1039,21 +1033,14 @@ Hormat kami yang berbahagia,
             // =================================================================
             // H. BUKU TAMU & UCAPAN DOA RESTU INTERAKTIF
             // =================================================================
-            const initialWishes = [];
-
-            let wishesList = [...initialWishes];
-            try {
-                const stored = localStorage.getItem('wishes_jashen_madiun_v2');
-                if (stored) wishesList = JSON.parse(stored);
-            } catch (err) {}
+            // GANTI URL DI BAWAH SETELAH WEB APP GOOGLE APPS SCRIPT DI-DEPLOY.
+            const WISHES_API_URL = 'https://script.google.com/macros/s/AKfycbwNjYtj6IICkSmtZw0ieH_DJuwnootULLMcdRbrSr7VoEIHQzyirPLxWsLJTY_I6x-m/exec';
+            let wishesList = [];
+            let wishesLoading = false;
 
             function escapeHtml(text) {
-                return text.replace(/[&<>"']/g, ch => ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&#39;'
+                return String(text ?? '').replace(/[&<>"']/g, ch => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
                 }[ch]));
             }
 
@@ -1061,62 +1048,96 @@ Hormat kami yang berbahagia,
                 const container = document.getElementById('wishes-container');
                 const counter = document.getElementById('wishes-counter');
                 counter.textContent = `${wishesList.length} Ucapan`;
-
+                if (!wishesList.length) {
+                    container.innerHTML = '<p class="font-sans text-xs text-sogan/65 text-center py-5">Belum ada ucapan. Jadilah yang pertama mengirim doa untuk Jashen.</p>';
+                    return;
+                }
                 container.innerHTML = wishesList.map(item => {
                     const isHadir = item.status === 'Hadir';
                     const badgeStyle = isHadir
                         ? 'bg-emerald-900/10 text-emerald-900 border-emerald-800/30'
                         : 'bg-amber-900/10 text-amber-900 border-amber-800/30';
                     const badgeLabel = isHadir ? '✓ InsyaAllah Hadir' : '• Berhalangan';
-
                     return `
                         <div class="bg-ivory-pure border border-gold/45 rounded-2xl p-4 shadow-sm">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <span class="font-serif font-bold text-lg text-sogan">${escapeHtml(item.name)}</span>
                                 <span class="font-sans text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${badgeStyle}">${badgeLabel}</span>
                             </div>
-                            <p class="font-serif text-base text-sogan/90 leading-relaxed">${escapeHtml(item.message)}</p>
-                            <span class="block font-sans text-[10px] text-gold mt-2">${escapeHtml(item.time)}</span>
-                        </div>
-                    `;
+                            <p class="font-serif text-base text-sogan/90 leading-relaxed whitespace-pre-wrap">${escapeHtml(item.message)}</p>
+                            <span class="block font-sans text-[10px] text-gold mt-2">${escapeHtml(item.time || '')}</span>
+                        </div>`;
                 }).join('');
             }
 
-            renderWishesList();
+            function loadSharedWishes() {
+                if (!WISHES_API_URL.startsWith('https://script.google.com/macros/s/')) {
+                    document.getElementById('wishes-container').innerHTML = '<p class="font-sans text-xs text-amber-800 text-center py-4">Buku tamu online belum dihubungkan. Admin perlu memasang URL Google Apps Script.</p>';
+                    return;
+                }
+                if (wishesLoading) return;
+                wishesLoading = true;
+                const callbackName = 'wishesCallback_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+                const script = document.createElement('script');
+                const cleanup = () => { wishesLoading = false; script.remove(); try { delete window[callbackName]; } catch (e) {} };
+                window[callbackName] = (data) => {
+                    if (data && Array.isArray(data.wishes)) {
+                        wishesList = data.wishes;
+                        renderWishesList();
+                    }
+                    cleanup();
+                };
+                script.onerror = () => { cleanup(); document.getElementById('wishes-container').innerHTML = '<p class="font-sans text-xs text-amber-800 text-center py-4">Ucapan belum dapat dimuat. Periksa koneksi internet dan konfigurasi buku tamu.</p>'; };
+                script.src = `${WISHES_API_URL}?action=list&callback=${callbackName}&_=${Date.now()}`;
+                document.body.appendChild(script);
+            }
 
-            // Isi otomatis nama pengirim ucapan jika parameter tamu tersedia
+            renderWishesList();
+            loadSharedWishes();
+
             if (currentGuestName.trim()) {
                 document.getElementById('wish-name').value = currentGuestName.trim();
             }
 
-            document.getElementById('wishes-form').addEventListener('submit', (e) => {
+            document.getElementById('wishes-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const form = e.currentTarget;
                 const nameEl = document.getElementById('wish-name');
                 const statusEl = document.getElementById('wish-status');
                 const msgEl = document.getElementById('wish-message');
-
                 const nameVal = nameEl.value.trim();
                 const statusVal = statusEl.value;
                 const msgVal = msgEl.value.trim();
-
                 if (!nameVal || !msgVal) return;
-
-                wishesList.unshift({
-                    name: nameVal,
-                    status: statusVal,
-                    message: msgVal,
-                    time: 'Baru saja'
-                });
-
+                if (!WISHES_API_URL.startsWith('https://script.google.com/macros/s/')) {
+                    showToast('Buku tamu online belum diaktifkan oleh admin.');
+                    return;
+                }
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.classList.add('opacity-60');
                 try {
-                    localStorage.setItem('wishes_jashen_madiun_v2', JSON.stringify(wishesList));
-                } catch (err) {}
-
-                renderWishesList();
-                nameEl.value = '';
-                msgEl.value = '';
-                showToast('Terima kasih! Doa restu Anda telah tercatat.');
+                    // text/plain menghindari preflight CORS; Apps Script menerima JSON dari body.
+                    await fetch(WISHES_API_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify({ name: nameVal, status: statusVal, message: msgVal })
+                    });
+                    nameEl.value = '';
+                    msgEl.value = '';
+                    showToast('Ucapan dikirim. Daftar akan diperbarui sebentar lagi.');
+                    setTimeout(loadSharedWishes, 1800);
+                } catch (err) {
+                    showToast('Ucapan belum terkirim. Periksa koneksi internet.');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('opacity-60');
+                }
             });
+
+            // Ambil pembaruan dari buku tamu bersama secara berkala.
+            setInterval(loadSharedWishes, 20000);
 
             // =================================================================
             // I. HELPER NOTIFIKASI TOAST
