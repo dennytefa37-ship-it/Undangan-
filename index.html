@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Tasyakuran Aqiqah & Tedak Siten - Jashen Arxean Hans Tefa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel, Cormorant Garamond, Plus Jakarta Sans, Amiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sogan: {
+                            DEFAULT: '#24140E',
+                            light: '#3B2219',
+                            dark: '#160B07',
+                        },
+                        ivory: {
+                            DEFAULT: '#FAF3E6',
+                            box: '#F4EBD9',
+                            pure: '#FFFDF9',
+                        },
+                        maroon: {
+                            DEFAULT: '#761C1C',
+                            dark: '#521111',
+                            light: '#962828',
+                        },
+                        gold: {
+                            DEFAULT: '#9C7230',
+                            bright: '#D4A853',
+                            soft: '#C5A059',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['"Cinzel"', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['"Amiri"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Latar Belakang Sogan Cokelat Tua dengan Pola Geometris Batik Kawung & Porang Madiun */
+        .bg-madiun-sogan {
+            background-color: #24140E;
+            background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23D4A853' stroke-width='0.7' stroke-opacity='0.11'%3E%3C!-- Motif Kawung --%3E%3Cpath d='M36 0c9.941 0 18 8.059 18 18 0-9.941 8.059-18 18-18v36c-9.941 0-18-8.059-18-18 0 9.941-8.059 18-18 18s-18-8.059-18-18c0 9.941-8.059 18-18 18V0c9.941 0 18 8.059 18 18 0-9.941 8.059-18 18-18zm0 36c9.941 0 18 8.059 18 18 0-9.941 8.059-18 18-18v36c-9.941 0-18-8.059-18-18 0 9.941-8.059 18-18 18s-18-8.059-18-18c0 9.941-8.059 18-18 18V36c9.941 0 18 8.059 18 18 0-9.941 8.059-18 18-18z'/%3E%3C!-- Motif Daun Porang Khas Madiun --%3E%3Cpath d='M36 12 L40 18 L36 24 L32 18 Z'/%3E%3Cpath d='M36 48 L40 54 L36 60 L32 54 Z'/%3E%3Cpath d='M12 36 L18 40 L24 36 L18 32 Z'/%3E%3Cpath d='M48 36 L54 40 L60 36 L54 32 Z'/%3E%3Ccircle cx='36' cy='36' r='2.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Bentuk Kubah / Gunungan Melengkung Khas Kartu Undangan */
+        .madiun-arch-card {
+            border-radius: 50% 50% 0.75rem 0.75rem / 7.5rem 7.5rem 0.75rem 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .madiun-arch-card {
+                border-radius: 50% 50% 1rem 1rem / 9.5rem 9.5rem 1rem 1rem;
+            }
+        }
+
+        .madiun-arch-inner {
+            border-radius: 50% 50% 0.5rem 0.5rem / 7.1rem 7.1rem 0.5rem 0.5rem;
+        }
+        @media (min-width: 640px) {
+            .madiun-arch-inner {
+                border-radius: 50% 50% 0.75rem 0.75rem / 9.1rem 9.1rem 0.75rem 0.75rem;
+            }
+        }
+
+        /* Transisi Halaman Sampul (Cover) */
+        #cover-overlay {
+            transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.85s ease;
+        }
+        #cover-overlay.is-opened {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Animasi Equalizer Musik Saxophone */
+        @keyframes rindikBar {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .music-playing .eq-bar-1 { animation: rindikBar 0.7s ease-in-out infinite; }
+        .music-playing .eq-bar-2 { animation: rindikBar 0.5s ease-in-out infinite 0.15s; }
+        .music-playing .eq-bar-3 { animation: rindikBar 0.8s ease-in-out infinite 0.3s; }
+        .music-playing .eq-bar-4 { animation: rindikBar 0.6s ease-in-out infinite 0.1s; }
+
+        /* Animasi Muncul Bertahap */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #24140E; }
+        ::-webkit-scrollbar-thumb { background: #9C7230; border-radius: 9999px; }
+    </style>
+</head>
+<body class="bg-madiun-sogan text-sogan font-serif antialiased selection:bg-maroon/20 selection:text-maroon overflow-x-hidden">
+
+    <!-- =========================================================================
+         1. HALAMAN SAMPUL (COVER PEMBUKA)
+    ========================================================================== -->
+    <div id="cover-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-madiun-sogan p-4 sm:p-6 overflow-y-auto">
+        <div class="relative w-full max-w-md bg-ivory madiun-arch-card p-2.5 sm:p-3.5 shadow-[0_25px_70px_rgba(0,0,0,0.75)] border-2 border-gold-bright">
+            <div class="madiun-arch-inner border-[1.5px] border-gold px-6 pt-12 pb-9 sm:px-8 sm:pt-14 sm:pb-10 text-center flex flex-col items-center">
+                
+                <!-- Ornamen Gunungan & Berlian Khas Madiun -->
+                <div class="mb-3 text-maroon">
+                    <svg class="w-36 h-12 mx-auto" viewBox="0 0 180 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Gunungan Siluet Halus di Belakang -->
+                        <path d="M90 3C82 14 73 26 71 42H109C107 26 98 14 90 3Z" fill="#761C1C" fill-opacity="0.08" stroke="#9C7230" stroke-width="1"/>
+                        <!-- Berlian Tengah -->
+                        <path d="M90 13L98 25L90 37L82 25L90 13Z" fill="#761C1C" stroke="#D4A853" stroke-width="1.2"/>
+                        <!-- Titik-titik Emas & Marun Melengkung Kiri -->
+                        <circle cx="66" cy="26" r="3.5" fill="#761C1C" stroke="#D4A853" stroke-width="1.2"/>
+                        <circle cx="53" cy="28" r="3" fill="#761C1C" stroke="#D4A853" stroke-width="1.1"/>
+                        <circle cx="41" cy="31" r="2.6" fill="#761C1C" stroke="#D4A853" stroke-width="1"/>
+                        <circle cx="30" cy="35" r="2.2" fill="#761C1C" stroke="#D4A853" stroke-width="0.9"/>
+                        <!-- Titik-titik Emas & Marun Melengkung Kanan -->
+                        <circle cx="114" cy="26" r="3.5" fill="#761C1C" stroke="#D4A853" stroke-width="1.2"/>
+                        <circle cx="127" cy="28" r="3" fill="#761C1C" stroke="#D4A853" stroke-width="1.1"/>
+                        <circle cx="139" cy="31" r="2.6" fill="#761C1C" stroke="#D4A853" stroke-width="1"/>
+                        <circle cx="150" cy="35" r="2.2" fill="#761C1C" stroke="#D4A853" stroke-width="0.9"/>
+                    </svg>
+                </div>
+
+                <p class="font-sans uppercase tracking-[0.28em] text-[11px] font-bold text-maroon mb-1.5">
+                    Undangan
+                </p>
+                <h1 class="font-serif font-bold text-3xl sm:text-4xl text-sogan leading-tight">
+                    Tasyakuran Aqiqah<br>
+                    <span class="text-maroon">&amp; Tedak Siten</span>
+                </h1>
+
+                <!-- Pembatas Berlian & Garis Emas -->
+                <div class="my-3.5 flex items-center justify-center gap-2 w-48">
+                    <span class="h-[1.5px] flex-1 bg-gold"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    <span class="w-2.5 h-2.5 rotate-45 bg-maroon"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    <span class="h-[1.5px] flex-1 bg-gold"></span>
+                </div>
+
+                <p class="font-serif italic text-base text-sogan/80">Putra Tercinta:</p>
+                <h2 class="font-serif font-bold text-2xl sm:text-[26px] text-maroon mt-0.5 mb-5">
+                    Jashen Arxean Hans Tefa
+                </h2>
+
+                <!-- Kotak Kepada Yth di Cover -->
+                <div class="w-full bg-ivory-box/90 border border-gold rounded-xl px-4 py-3.5 mb-6 shadow-inner">
+                    <p class="font-sans uppercase tracking-[0.14em] text-[10px] font-bold text-gold mb-1">
+                        Kepada Yth. Bapak/Ibu/Saudara/i:
+                    </p>
+                    <p class="js-guest-name font-serif font-bold text-xl text-maroon min-h-[1.75rem] flex items-center justify-center">
+                        Tamu Undangan
+                    </p>
+                </div>
+
+                <button id="btn-open-invitation" type="button" class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-maroon-dark via-maroon to-maroon-dark hover:brightness-110 active:scale-[0.98] text-ivory font-sans font-semibold text-xs sm:text-sm tracking-wide px-7 py-3.5 rounded-full border border-gold-bright shadow-lg shadow-maroon/30 transition-all duration-300 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg>
+                    <span>Buka Undangan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         2. KONTROL MENGAMBANG: PEMUTAR INSTRUMENTAL SAXOPHONE & GENERATOR UNDANGAN WA
+    ========================================================================== -->
+    <!-- Tombol Musik Instrumental Saxophone (Pojok Kiri Bawah) -->
+    <div class="fixed bottom-4 left-4 z-40">
+        <button id="btn-toggle-music" type="button" aria-label="Putar atau Jeda Musik Instrumental Saxophone" class="flex items-center gap-2.5 bg-sogan-dark/95 hover:bg-sogan text-ivory border border-gold-bright/70 shadow-xl px-3.5 py-2.5 rounded-full transition-all duration-300 cursor-pointer">
+            <div id="music-eq" class="flex items-end gap-[2px] h-4 w-4 justify-center">
+                <span class="eq-bar-1 w-[2.5px] h-1.5 bg-gold-bright rounded-full"></span>
+                <span class="eq-bar-2 w-[2.5px] h-3 bg-gold-bright rounded-full"></span>
+                <span class="eq-bar-3 w-[2.5px] h-2 bg-gold-bright rounded-full"></span>
+                <span class="eq-bar-4 w-[2.5px] h-2.5 bg-gold-bright rounded-full"></span>
+            </div>
+            <div class="text-left">
+                <span id="music-status-label" class="block font-sans text-[11px] font-semibold text-gold-bright leading-none">Saxophone: Jeda</span>
+                <span class="block font-sans text-[9px] text-ivory/70 leading-tight mt-0.5">Instrumental Saxophone</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Tombol Kirim Undangan WA / Isi Nama Tamu (Pojok Kanan Bawah) -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <button id="btn-open-guest-modal" type="button" class="flex items-center gap-2 bg-maroon hover:bg-maroon-dark text-ivory border border-gold-bright shadow-xl px-4 py-3 rounded-full transition-all duration-300 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="font-sans text-xs font-semibold tracking-wide">Kirim Undangan WA</span>
+        </button>
+    </div>
+
+    <!-- =========================================================================
+         3. MODAL GENERATOR NAMA TAMU, LINK UNDANGAN WA & UNDUH KARTU PNG
+    ========================================================================== -->
+    <div id="guest-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-ivory border-2 border-gold-bright rounded-3xl w-full max-w-md p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-gold/30 pb-3 mb-4">
+                <div>
+                    <h3 class="font-serif font-bold text-2xl text-maroon">Kirim Undangan &amp; Nama Tamu</h3>
+                    <p class="font-sans text-xs text-sogan/75">Atur nama tamu untuk kotak undangan, link WA, atau kartu gambar</p>
+                </div>
+                <button id="btn-close-guest-modal" type="button" class="p-2 rounded-full hover:bg-gold/15 text-sogan transition cursor-pointer" aria-label="Tutup">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="space-y-4 font-sans text-sm">
+                <div>
+                    <label for="input-guest-name" class="block text-xs font-bold text-sogan mb-1.5">
+                        Nama Tamu Undangan (Kepada Yth. Bapak/Ibu/Saudara/i:)
+                    </label>
+                    <input type="text" id="input-guest-name" placeholder="Contoh: Bpk. H. Sutrisno & Keluarga" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-gold focus:border-maroon focus:outline-none text-sogan font-medium">
+                    <p class="text-[11px] text-sogan/70 mt-1">
+                        Nama ini otomatis tampil di kotak atas undangan &amp; teks pesan WhatsApp.
+                    </p>
+                </div>
+
+                <!-- Preview Tautan URL Dinamis -->
+                <div class="bg-ivory-box border border-gold/50 rounded-xl p-3">
+                    <span class="block text-[10px] uppercase tracking-wider font-bold text-gold mb-1">Tautan Undangan Khusus Tamu:</span>
+                    <p id="generated-url-preview" class="text-xs text-sogan break-all font-mono select-all bg-white/80 p-2 rounded-lg border border-gold/25"></p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-2.5 pt-1">
+                    <button id="btn-apply-guest" type="button" class="w-full py-2.5 px-4 rounded-xl bg-sogan hover:bg-sogan-light text-ivory font-semibold text-xs border border-gold/50 shadow transition cursor-pointer">
+                        Terapkan Nama Tamu ke Layar Undangan
+                    </button>
+
+                    <button id="btn-copy-wa-invite" type="button" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-maroon-dark via-maroon to-maroon-dark hover:brightness-110 text-ivory font-semibold text-xs border border-gold-bright shadow-md flex items-center justify-center gap-2 transition cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        <span>Salin Teks Undangan WhatsApp Siap Kirim</span>
+                    </button>
+
+                    <button id="btn-download-card-png" type="button" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-ivory-box text-maroon font-semibold text-xs border border-gold flex items-center justify-center gap-2 transition cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <span>Unduh Kartu Undangan Gambar (.PNG)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         4. NOTIFIKASI TOAST (PENGGANTI ALERT)
+    ========================================================================== -->
+    <div id="toast-box" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 -translate-y-3 transition-all duration-300">
+        <div class="bg-sogan-dark text-ivory border border-gold-bright px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2 font-sans text-xs font-medium">
+            <span class="text-gold-bright">◆</span>
+            <span id="toast-text">Teks undangan berhasil disalin!</span>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         5. KONTEN UTAMA UNDANGAN DIGITAL (DESAIN KUBAH JAWA MADIUN)
+    ========================================================================== -->
+    <main class="max-w-xl mx-auto px-3.5 sm:px-6 pt-6 pb-24 space-y-7">
+
+        <!-- KARTU UTAMA KUBAH MELENGKUNG (SESUAI GAMBAR REFERENSI) -->
+        <article class="relative bg-ivory madiun-arch-card p-2.5 sm:p-3.5 shadow-[0_20px_60px_rgba(0,0,0,0.65)] border-2 border-gold-bright">
+            <!-- Bingkai Dalam Emas -->
+            <div class="relative madiun-arch-inner border-[1.5px] border-gold px-5 sm:px-9 pt-11 sm:pt-14 pb-10 sm:pb-12 text-center overflow-hidden">
+
+                <!-- Ornamen Berlian & Titik Emas Melengkung di Puncak Kubah -->
+                <div class="mb-3 reveal-item">
+                    <svg class="w-40 sm:w-44 h-12 mx-auto" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M90 8L98 20L90 32L82 20L90 8Z" fill="#761C1C"/>
+                        <!-- 4 Titik Kiri -->
+                        <circle cx="66" cy="21" r="3.4" fill="#761C1C" stroke="#9C7230" stroke-width="1.3"/>
+                        <circle cx="53" cy="23" r="3" fill="#761C1C" stroke="#9C7230" stroke-width="1.2"/>
+                        <circle cx="41" cy="26" r="2.6" fill="#761C1C" stroke="#9C7230" stroke-width="1.1"/>
+                        <circle cx="30" cy="30" r="2.2" fill="#761C1C" stroke="#9C7230" stroke-width="1"/>
+                        <!-- 4 Titik Kanan -->
+                        <circle cx="114" cy="21" r="3.4" fill="#761C1C" stroke="#9C7230" stroke-width="1.3"/>
+                        <circle cx="127" cy="23" r="3" fill="#761C1C" stroke="#9C7230" stroke-width="1.2"/>
+                        <circle cx="139" cy="26" r="2.6" fill="#761C1C" stroke="#9C7230" stroke-width="1.1"/>
+                        <circle cx="150" cy="30" r="2.2" fill="#761C1C" stroke="#9C7230" stroke-width="1"/>
+                    </svg>
+                </div>
+
+                <!-- JUDUL UTAMA -->
+                <header class="reveal-item">
+                    <p class="font-sans uppercase tracking-[0.32em] text-[11px] sm:text-xs font-extrabold text-maroon mb-1.5">
+                        UNDANGAN
+                    </p>
+                    <h1 class="font-serif font-bold text-3xl sm:text-[40px] text-sogan leading-[1.12]">
+                        Tasyakuran Aqiqah<br>
+                        <span class="text-maroon">&amp; Tedak Siten</span>
+                    </h1>
+
+                    <!-- Garis Pembatas Ornamen Berlian Tengah -->
+                    <div class="mt-2.5 mb-5 flex items-center justify-center gap-2 max-w-[230px] mx-auto">
+                        <span class="h-[1.5px] flex-1 bg-gold"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        <span class="w-2.5 h-2.5 rotate-45 bg-maroon"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        <span class="h-[1.5px] flex-1 bg-gold"></span>
+                    </div>
+                </header>
+
+                <!-- KOTAK NAMA TAMU UNDANGAN DI BAGIAN ATAS (SEBELUM BISMILLAHIRRAHMANIRRAHIM) -->
+                <div class="reveal-item max-w-md mx-auto mb-7">
+                    <div class="bg-ivory-box border border-gold rounded-xl px-4 py-3.5 sm:py-4 shadow-[inset_0_1px_4px_rgba(156,114,48,0.12)]">
+                        <p class="font-sans uppercase tracking-[0.12em] text-[10px] sm:text-[11px] font-bold text-gold mb-1.5">
+                            KEPADA YTH. BAPAK/IBU/SAUDARA/I:
+                        </p>
+                        <p class="js-guest-name font-serif font-bold text-xl sm:text-2xl text-maroon min-h-[1.85rem] flex items-center justify-center">
+                            <!-- Nama tamu tampil otomatis dari URL atau modal, kosong/placeholder halus jika belum diisi -->
+                        </p>
+                    </div>
+                </div>
+
+                <!-- KALIMAT PEMBUKA (BISMILLAH, SALAM, & PENGANTAR) -->
+                <div class="reveal-item space-y-2 mb-6">
+                    <p class="font-serif italic font-semibold text-xl sm:text-2xl text-gold">
+                        Bismillahirrahmanirrahim
+                    </p>
+                    <p class="font-serif font-bold text-lg sm:text-xl text-sogan">
+                        Assalamu’alaikum Warahmatullahi Wabarakatuh
+                    </p>
+                    <p class="font-serif text-base sm:text-[18px] text-sogan/90 leading-relaxed max-w-md mx-auto pt-1">
+                        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara Tasyakuran Aqiqah serta prosesi Tedak Siten putra kami tercinta:
+                    </p>
+                </div>
+
+                <!-- KOTAK NAMA PUTRA TERCINTA -->
+                <div class="reveal-item max-w-md mx-auto mb-6">
+                    <div class="bg-ivory-pure border-[1.5px] border-maroon rounded-xl px-4 py-4 sm:py-5 shadow-sm">
+                        <h2 class="font-serif font-bold text-2xl sm:text-[30px] text-maroon tracking-wide leading-snug">
+                            Jashen Arxean Hans Tefa
+                        </h2>
+                        <p class="font-serif italic text-base sm:text-[17px] text-sogan mt-1">
+                            Putra dari Bapak Denny &amp; Ibu Lisa
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DETAIL WAKTU & TEMPAT ACARA -->
+                <div class="reveal-item max-w-md mx-auto mb-7">
+                    <p class="font-serif text-base sm:text-[17px] text-sogan/90 mb-3">
+                        Yang insyaAllah akan dilaksanakan pada:
+                    </p>
+
+                    <div class="bg-ivory-pure/90 border border-gold rounded-2xl px-4 sm:px-6 py-4 sm:py-5 space-y-3.5 shadow-sm">
+                        <!-- Hari / Tanggal -->
+                        <div class="pb-3 border-b border-gold/35">
+                            <span class="block font-sans uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-bold text-gold mb-0.5">
+                                HARI / TANGGAL
+                            </span>
+                            <p class="font-serif font-bold text-xl sm:text-2xl text-sogan">
+                                Kamis, 19 November 2026
+                            </p>
+                        </div>
+
+                        <!-- Waktu -->
+                        <div class="pb-3 border-b border-gold/35">
+                            <span class="block font-sans uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-bold text-gold mb-0.5">
+                                WAKTU
+                            </span>
+                            <p class="font-serif font-bold text-xl sm:text-2xl text-sogan">
+                                Pukul 18.00 WIB s/d Selesai
+                            </p>
+                        </div>
+
+                        <!-- Tempat -->
+                        <div>
+                            <span class="block font-sans uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-bold text-gold mb-0.5">
+                                TEMPAT
+                            </span>
+                            <p class="font-serif font-bold text-lg sm:text-xl text-maroon leading-snug">
+                                Kediaman Ibu Lisa, Desa Keringan,<br>Suratmajan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KALIMAT PENUTUP & SALAM -->
+                <div class="reveal-item space-y-3 max-w-md mx-auto">
+                    <p class="font-serif text-base sm:text-[17px] text-sogan/90 leading-relaxed">
+                        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+                    </p>
+
+                    <p class="font-serif font-bold text-lg sm:text-xl text-sogan pt-1">
+                        Wassalamu’alaikum Warahmatullahi Wabarakatuh
+                    </p>
+
+                    <!-- Garis Pembatas Berlian Bawah -->
+                    <div class="py-1 flex items-center justify-center gap-2 max-w-[200px] mx-auto">
+                        <span class="h-[1px] flex-1 bg-gold"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        <span class="w-2.5 h-2.5 rotate-45 bg-maroon"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        <span class="h-[1px] flex-1 bg-gold"></span>
+                    </div>
+
+                    <div class="pt-1">
+                        <p class="font-serif italic text-base text-sogan/85">
+                            Hormat kami yang berbahagia,
+                        </p>
+                        <p class="font-serif font-bold text-xl sm:text-2xl text-maroon mt-0.5">
+                            Keluarga Bapak Denny &amp; Ibu Lisa
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ornamen Berlian Sudut Kiri Bawah & Kanan Bawah -->
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 rotate-45 bg-maroon"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 rotate-45 bg-maroon"></span>
+            </div>
+        </article>
+
+        <!-- =====================================================================
+             6. KARTU HITUNG MUNDUR, SIMPAN KALENDER & PETA LOKASI
+        ====================================================================== -->
+        <section class="reveal-item bg-ivory border-2 border-gold-bright rounded-3xl p-5 sm:p-7 shadow-xl text-center">
+            <p class="font-sans uppercase tracking-[0.22em] text-[10px] sm:text-xs font-bold text-maroon mb-1">
+                Menghitung Hari Bahagia
+            </p>
+            <h3 class="font-serif font-bold text-2xl sm:text-3xl text-sogan mb-4">
+                Menuju Acara Tasyakuran
+            </h3>
+
+            <!-- Grid Countdown -->
+            <div class="grid grid-cols-4 gap-2 sm:gap-3.5 max-w-md mx-auto mb-5">
+                <div class="bg-sogan text-ivory border border-gold-bright rounded-2xl py-3 px-1 shadow">
+                    <span id="cd-days" class="block font-serif font-bold text-2xl sm:text-3xl text-gold-bright">00</span>
+                    <span class="font-sans text-[10px] uppercase tracking-wider text-ivory/80">Hari</span>
+                </div>
+                <div class="bg-sogan text-ivory border border-gold-bright rounded-2xl py-3 px-1 shadow">
+                    <span id="cd-hours" class="block font-serif font-bold text-2xl sm:text-3xl text-gold-bright">00</span>
+                    <span class="font-sans text-[10px] uppercase tracking-wider text-ivory/80">Jam</span>
+                </div>
+                <div class="bg-sogan text-ivory border border-gold-bright rounded-2xl py-3 px-1 shadow">
+                    <span id="cd-minutes" class="block font-serif font-bold text-2xl sm:text-3xl text-gold-bright">00</span>
+                    <span class="font-sans text-[10px] uppercase tracking-wider text-ivory/80">Menit</span>
+                </div>
+                <div class="bg-sogan text-ivory border border-gold-bright rounded-2xl py-3 px-1 shadow">
+                    <span id="cd-seconds" class="block font-serif font-bold text-2xl sm:text-3xl text-gold-bright">00</span>
+                    <span class="font-sans text-[10px] uppercase tracking-wider text-ivory/80">Detik</span>
+                </div>
+            </div>
+
+            <p id="cd-status-msg" class="hidden font-serif italic text-base text-maroon mb-4">
+                Acara sedang berlangsung / telah dilaksanakan. Terima kasih atas doa restunya.
+            </p>
+
+            <!-- Tombol Kalender & Google Maps -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
+                <button id="btn-save-calendar" type="button" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sogan hover:bg-sogan-light text-ivory font-sans font-semibold text-xs px-5 py-3 rounded-full border border-gold-bright shadow transition cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <span>Simpan ke Kalender (.ics)</span>
+                </button>
+
+                <a href="https://www.google.com/maps/place/7%C2%B035'32.2%22S+111%C2%B028'31.9%22E/@-7.5923484,111.475537,20z/data=!4m4!3m3!8m2!3d-7.592272!4d111.475531?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-maroon hover:bg-maroon-dark text-ivory font-sans font-semibold text-xs px-5 py-3 rounded-full border border-gold-bright shadow transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Buka Google Maps / Petunjuk Arah</span>
+                </a>
+            </div>
+
+            <!-- Sematan Peta Lokasi Interaktif (Koordinat 7°35'32.2"S 111°28'31.9"E) -->
+            <div class="max-w-md mx-auto">
+                <div class="rounded-2xl overflow-hidden border-2 border-gold shadow-md bg-ivory-box">
+                    <iframe
+                        title="Peta Lokasi Kediaman Ibu Lisa, Desa Keringan, Suratmajan"
+                        src="https://maps.google.com/maps?q=-7.592272,111.475531&t=&z=18&ie=UTF8&iwloc=&output=embed"
+                        class="w-full h-56 sm:h-64 border-0 block"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="font-sans text-[11px] text-sogan/75 mt-2">
+                    Titik Koordinat: <span class="font-semibold text-maroon">7°35'32.2"S 111°28'31.9"E</span> • Kediaman Ibu Lisa, Desa Keringan, Suratmajan
+                </p>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             7. MAKNA PROSESI TEDAK SITEN & AQIQAH (NUANSA JAWA MADIUN)
+        ====================================================================== -->
+        <section class="reveal-item bg-ivory border border-gold-bright rounded-3xl p-5 sm:p-7 shadow-xl">
+            <div class="text-center mb-4">
+                <span class="font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-gold">Kearifan Budaya Jawa</span>
+                <h3 class="font-serif font-bold text-2xl text-sogan mt-0.5">Makna Aqiqah &amp; Tedak Siten</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sogan/90">
+                <div class="bg-ivory-pure border border-gold/50 rounded-2xl p-4">
+                    <h4 class="font-serif font-bold text-lg text-maroon mb-1 flex items-center gap-1.5">
+                        <span class="text-gold">◆</span> Tasyakuran Aqiqah
+                    </h4>
+                    <p class="font-serif text-base leading-relaxed">
+                        Ungkapan rasa syukur kehadirat Allah SWT atas kelahiran ananda <strong>Jashen Arxean Hans Tefa</strong>, memohon keberkahan agar tumbuh menjadi anak yang sholeh, sehat, dan berbakti kepada kedua orang tua.
+                    </p>
+                </div>
+
+                <div class="bg-ivory-pure border border-gold/50 rounded-2xl p-4">
+                    <h4 class="font-serif font-bold text-lg text-maroon mb-1 flex items-center gap-1.5">
+                        <span class="text-gold">◆</span> Tradisi Tedak Siten
+                    </h4>
+                    <p class="font-serif text-base leading-relaxed">
+                        Warisan tradisi luhur Jawa saat buah hati pertama kali menapakkan kaki ke bumi (<em>siten</em>), diiringi doa restu sesepuh agar langkah hidup ananda kelak mantap, mandiri, dan penuh manfaat.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             8. BUKU TAMU & UCAPAN DOA RESTU INTERAKTIF
+        ====================================================================== -->
+        <section class="reveal-item bg-ivory border-2 border-gold-bright rounded-3xl p-5 sm:p-7 shadow-xl">
+            <div class="text-center mb-5">
+                <span class="font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-maroon">Buku Tamu Digital</span>
+                <h3 class="font-serif font-bold text-2xl sm:text-3xl text-sogan mt-0.5">Ucapan &amp; Doa Restu</h3>
+                <p class="font-serif text-base text-sogan/80 mt-0.5">
+                    Kirimkan konfirmasi kehadiran serta doa terbaik untuk ananda Jashen
+                </p>
+            </div>
+
+            <form id="wishes-form" class="space-y-3.5 bg-ivory-pure border border-gold/50 rounded-2xl p-4 sm:p-5 font-sans">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label for="wish-name" class="block text-xs font-bold text-sogan mb-1">Nama Bapak/Ibu/Saudara/i *</label>
+                        <input type="text" id="wish-name" required placeholder="Masukkan nama Anda" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory/60 border border-gold/50 focus:border-maroon focus:bg-white focus:outline-none text-xs sm:text-sm text-sogan">
+                    </div>
+                    <div>
+                        <label for="wish-status" class="block text-xs font-bold text-sogan mb-1">Konfirmasi Kehadiran *</label>
+                        <select id="wish-status" class="w-full px-3.5 py-2.5 rounded-xl bg-ivory/60 border border-gold/50 focus:border-maroon focus:bg-white focus:outline-none text-xs sm:text-sm text-sogan">
+                            <option value="Hadir">InsyaAllah Hadir</option>
+                            <option value="Berhalangan">Maaf, Berhalangan Hadir</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="wish-message" class="block text-xs font-bold text-sogan mb-1">Doa &amp; Ucapan Restu *</label>
+                    <textarea id="wish-message" rows="3" required placeholder="Tuliskan doa terbaik untuk ananda Jashen Arxean Hans Tefa..." class="w-full px-3.5 py-2.5 rounded-xl bg-ivory/60 border border-gold/50 focus:border-maroon focus:bg-white focus:outline-none text-xs sm:text-sm text-sogan"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-maroon-dark via-maroon to-maroon-dark hover:brightness-110 active:scale-[0.99] text-ivory font-semibold text-xs sm:text-sm border border-gold-bright shadow-md transition cursor-pointer">
+                    Kirim Ucapan &amp; Konfirmasi
+                </button>
+            </form>
+
+            <!-- Daftar Ucapan Tamu -->
+            <div class="mt-6">
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <h4 class="font-serif font-bold text-xl text-sogan">Doa dari Tamu Undangan</h4>
+                    <span id="wishes-counter" class="font-sans text-[11px] font-bold bg-maroon/10 text-maroon border border-maroon/25 px-3 py-1 rounded-full">
+                        3 Ucapan
+                    </span>
+                </div>
+
+                <div id="wishes-container" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                    <!-- Dirender via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-ivory/80 space-y-1 pt-2">
+            <p class="font-serif italic text-lg text-gold-bright">
+                Tasyakuran Aqiqah &amp; Tedak Siten — Jashen Arxean Hans Tefa
+            </p>
+            <p class="font-sans text-xs text-ivory/65">
+                Kamis, 19 November 2026 • Desa Keringan, Suratmajan
+            </p>
+        </footer>
+
+    </main>
+
+
+    <audio id="saxophone-audio" src="semua-baik.mp3" preload="auto" loop></audio>
+
+    <!-- =========================================================================
+         9. JAVASCRIPT: BALI RINDIK AUDIO SAXOPHONE, DINAMIS TAMU, COUNTDOWN & CANVAS
+    ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // =================================================================
+            // A. PEMUTAR MUSIK INSTRUMENTAL SAXOPHONE (FILE MP3)
+            // =================================================================
+            const saxophoneAudio = document.getElementById('saxophone-audio');
+            const musicButton = document.getElementById('btn-toggle-music');
+            const musicLabel = document.getElementById('music-status-label');
+
+            function updateMusicUI(playing) {
+                musicButton.classList.toggle('music-playing', playing);
+                musicLabel.textContent = playing ? 'Saxophone: Putar' : 'Saxophone: Jeda';
+            }
+
+            async function playSaxophone() {
+                try {
+                    await saxophoneAudio.play();
+                    updateMusicUI(true);
+                } catch (err) {
+                    // Browser dapat memerlukan sentuhan pengguna untuk memulai audio.
+                    updateMusicUI(false);
+                    console.warn('Musik belum dapat diputar:', err);
+                }
+            }
+
+            function pauseSaxophone() {
+                saxophoneAudio.pause();
+                updateMusicUI(false);
+            }
+
+            musicButton.addEventListener('click', () => {
+                if (saxophoneAudio.paused) {
+                    playSaxophone();
+                } else {
+                    pauseSaxophone();
+                }
+            });
+
+            saxophoneAudio.addEventListener('ended', () => updateMusicUI(false));
+
+            // =================================================================
+            // B. MANAJEMEN NAMA TAMU UNDANGAN DINAMIS (?to=Nama+Tamu / ?kepada=)
+            // =================================================================
+            const urlParams = new URLSearchParams(window.location.search);
+            let currentGuestName = urlParams.get('to') || urlParams.get('kepada') || '';
+
+            function renderGuestName(name) {
+                const trimmed = (name || '').trim();
+                document.querySelectorAll('.js-guest-name').forEach(el => {
+                    if (trimmed) {
+                        el.textContent = trimmed;
+                    } else {
+                        // Di cover tampilkan "Tamu Undangan", di kotak undangan utama biarkan rapi/kosong sesuai referensi atau isi jika ada
+                        if (el.closest('#cover-overlay')) {
+                            el.textContent = 'Tamu Undangan';
+                        } else {
+                            el.textContent = '';
+                        }
+                    }
+                });
+
+                const inputEl = document.getElementById('input-guest-name');
+                if (inputEl && document.activeElement !== inputEl) {
+                    inputEl.value = trimmed;
+                }
+
+                // Perbarui preview URL khusus tamu
+                const baseUrl = window.location.origin + window.location.pathname;
+                const shareUrl = trimmed ? `${baseUrl}?to=${encodeURIComponent(trimmed)}` : baseUrl;
+                const urlPreviewEl = document.getElementById('generated-url-preview');
+                if (urlPreviewEl) {
+                    urlPreviewEl.textContent = shareUrl;
+                }
+            }
+
+            renderGuestName(currentGuestName);
+
+            // =================================================================
+            // C. BUKA HALAMAN SAMPUL (COVER) & ANIMASI MUNCUL
+            // =================================================================
+            const coverOverlay = document.getElementById('cover-overlay');
+            const btnOpenInv = document.getElementById('btn-open-invitation');
+
+            btnOpenInv.addEventListener('click', () => {
+                coverOverlay.classList.add('is-opened');
+                playSaxophone();
+
+                setTimeout(() => {
+                    document.querySelectorAll('.reveal-item').forEach((item, index) => {
+                        setTimeout(() => item.classList.add('is-visible'), index * 110);
+                    });
+                }, 220);
+            });
+
+            // =================================================================
+            // D. MODAL KIRIM UNDANGAN WA, INPUT TAMU & UNDUH GAMBAR PNG
+            // =================================================================
+            const guestModal = document.getElementById('guest-modal');
+            const inputGuestName = document.getElementById('input-guest-name');
+
+            document.getElementById('btn-open-guest-modal').addEventListener('click', () => {
+                renderGuestName(currentGuestName);
+                guestModal.classList.remove('hidden');
+                guestModal.classList.add('flex');
+            });
+
+            function closeGuestModal() {
+                guestModal.classList.add('hidden');
+                guestModal.classList.remove('flex');
+            }
+
+            document.getElementById('btn-close-guest-modal').addEventListener('click', closeGuestModal);
+            guestModal.addEventListener('click', (e) => {
+                if (e.target === guestModal) closeGuestModal();
+            });
+
+            inputGuestName.addEventListener('input', (e) => {
+                currentGuestName = e.target.value;
+                renderGuestName(currentGuestName);
+            });
+
+            document.getElementById('btn-apply-guest').addEventListener('click', () => {
+                currentGuestName = inputGuestName.value.trim();
+                renderGuestName(currentGuestName);
+                // Perbarui URL bar tanpa reload
+                const newUrl = currentGuestName
+                    ? `${window.location.pathname}?to=${encodeURIComponent(currentGuestName)}`
+                    : window.location.pathname;
+                window.history.replaceState({}, '', newUrl);
+                closeGuestModal();
+                showToast(currentGuestName ? `Nama tamu "${currentGuestName}" diterapkan!` : 'Kotak nama tamu dikosongkan.');
+            });
+
+            // Salin Teks Undangan WhatsApp Siap Kirim (menggunakan execCommand untuk kompatibilitas iframe)
+            document.getElementById('btn-copy-wa-invite').addEventListener('click', () => {
+                const guestLabel = currentGuestName.trim() || 'Bapak/Ibu/Saudara/i';
+                const baseUrl = window.location.origin + window.location.pathname;
+                const linkTamu = currentGuestName.trim()
+                    ? `${baseUrl}?to=${encodeURIComponent(currentGuestName.trim())}`
+                    : baseUrl;
+
+                const waMessage = `Kepada Yth. *${guestLabel}*
+
+*Bismillahirrahmanirrahim*
+*Assalamu’alaikum Warahmatullahi Wabarakatuh*
+
+Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara *Tasyakuran Aqiqah serta prosesi Tedak Siten* putra kami tercinta:
+
+*Jashen Arxean Hans Tefa*
+_(Putra dari Bapak Denny & Ibu Lisa)_
+
+Yang insyaAllah akan dilaksanakan pada:
+• *Hari / Tanggal:* Kamis, 19 November 2026
+• *Waktu:* Pukul 18.00 WIB s/d Selesai
+• *Tempat:* Kediaman Ibu Lisa, Desa Keringan, Suratmajan
+• *Lokasi Google Maps:* https://www.google.com/maps/place/7%C2%B035'32.2%22S+111%C2%B028'31.9%22E/@-7.5923484,111.475537,20z/data=!4m4!3m3!8m2!3d-7.592272!4d111.475531?entry=ttu
+
+Buka Undangan Digital:
+${linkTamu}
+
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+
+*Wassalamu’alaikum Warahmatullahi Wabarakatuh*
+
+Hormat kami yang berbahagia,
+*Keluarga Bapak Denny & Ibu Lisa*`;
+
+                const tempArea = document.createElement('textarea');
+                tempArea.value = waMessage;
+                tempArea.style.position = 'fixed';
+                tempArea.style.left = '-9999px';
+                document.body.appendChild(tempArea);
+                tempArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Teks undangan WhatsApp berhasil disalin!');
+                } catch (err) {
+                    showToast('Gagal menyalin teks.');
+                }
+                document.body.removeChild(tempArea);
+            });
+
+            // =================================================================
+            // E. GENERATOR GAMBAR KARTU UNDANGAN (.PNG) VIA HTML5 CANVAS
+            //    Menghasilkan gambar kartu undangan kubah Jawa Madiun beresolusi tinggi
+            //    lengkap dengan nama tamu yang sedang diisi!
+            // =================================================================
+            document.getElementById('btn-download-card-png').addEventListener('click', () => {
+                const canvas = document.createElement('canvas');
+                const W = 1080;
+                const H = 1920;
+                canvas.width = W;
+                canvas.height = H;
+                const ctx = canvas.getContext('2d');
+
+                // 1. Latar Sogan Cokelat Tua
+                ctx.fillStyle = '#24140E';
+                ctx.fillRect(0, 0, W, H);
+
+                // Pola Batik Kawung Halus
+                ctx.strokeStyle = 'rgba(212, 168, 83, 0.08)';
+                ctx.lineWidth = 1.5;
+                for (let gx = 0; gx < W; gx += 90) {
+                    for (let gy = 0; gy < H; gy += 90) {
+                        ctx.beginPath();
+                        ctx.arc(gx + 45, gy + 45, 32, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                }
+
+                // Helper menggambar path kubah melengkung
+                function traceArchPath(x, y, w, h, archH) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y + archH);
+                    ctx.quadraticCurveTo(x + w / 2, y - archH * 0.45, x + w, y + archH);
+                    ctx.lineTo(x + w, y + h);
+                    ctx.lineTo(x, y + h);
+                    ctx.closePath();
+                }
+
+                // 2. Kartu Kubah Krem Gading
+                ctx.save();
+                traceArchPath(52, 65, W - 104, H - 130, 220);
+                ctx.fillStyle = '#FAF3E6';
+                ctx.fill();
+                ctx.lineWidth = 5;
+                ctx.strokeStyle = '#D4A853';
+                ctx.stroke();
+
+                // Bingkai Dalam
+                traceArchPath(72, 85, W - 144, H - 170, 210);
+                ctx.lineWidth = 2.5;
+                ctx.strokeStyle = '#9C7230';
+                ctx.stroke();
+                ctx.restore();
+
+                // 3. Ornamen Berlian Puncak
+                ctx.fillStyle = '#761C1C';
+                ctx.beginPath();
+                ctx.moveTo(W / 2, 118);
+                ctx.lineTo(W / 2 + 18, 144);
+                ctx.lineTo(W / 2, 170);
+                ctx.lineTo(W / 2 - 18, 144);
+                ctx.closePath();
+                ctx.fill();
+
+                // Judul
+                ctx.textAlign = 'center';
+                ctx.fillStyle = '#761C1C';
+                ctx.font = 'bold 26px sans-serif';
+                ctx.fillText('U N D A N G A N', W / 2, 232);
+
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'bold 64px Georgia, serif';
+                ctx.fillText('Tasyakuran Aqiqah', W / 2, 310);
+
+                ctx.fillStyle = '#761C1C';
+                ctx.fillText('& Tedak Siten', W / 2, 382);
+
+                // Garis Emas Pembatas
+                ctx.strokeStyle = '#9C7230';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(W / 2 - 190, 412);
+                ctx.lineTo(W / 2 + 190, 412);
+                ctx.stroke();
+
+                // 4. Kotak Nama Tamu Undangan di Bagian Atas
+                const boxX = 160, boxY = 455, boxW = W - 320, boxH = 115;
+                ctx.fillStyle = '#F4EBD9';
+                ctx.strokeStyle = '#9C7230';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.roundRect(boxX, boxY, boxW, boxH, 18);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#9C7230';
+                ctx.font = 'bold 20px sans-serif';
+                ctx.fillText('KEPADA YTH. BAPAK/IBU/SAUDARA/I:', W / 2, boxY + 38);
+
+                if (currentGuestName.trim()) {
+                    ctx.fillStyle = '#761C1C';
+                    ctx.font = 'bold 34px Georgia, serif';
+                    ctx.fillText(currentGuestName.trim(), W / 2, boxY + 86);
+                }
+
+                // 5. Bismillah & Salam
+                ctx.fillStyle = '#9C7230';
+                ctx.font = 'italic 34px Georgia, serif';
+                ctx.fillText('Bismillahirrahmanirrahim', W / 2, 650);
+
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'bold 34px Georgia, serif';
+                ctx.fillText('Assalamu’alaikum Warahmatullahi Wabarakatuh', W / 2, 702);
+
+                ctx.fillStyle = '#3B2219';
+                ctx.font = '28px Georgia, serif';
+                ctx.fillText('Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud', W / 2, 765);
+                ctx.fillText('menyelenggarakan acara Tasyakuran Aqiqah serta prosesi Tedak Siten', W / 2, 804);
+                ctx.fillText('putra kami tercinta:', W / 2, 843);
+
+                // 6. Kotak Nama Putra
+                ctx.fillStyle = '#FFFDF9';
+                ctx.strokeStyle = '#761C1C';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.roundRect(140, 880, W - 280, 145, 22);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#761C1C';
+                ctx.font = 'bold 46px Georgia, serif';
+                ctx.fillText('Jashen Arxean Hans Tefa', W / 2, 945);
+
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'italic 28px Georgia, serif';
+                ctx.fillText('Putra dari Bapak Denny & Ibu Lisa', W / 2, 995);
+
+                // 7. Kotak Detail Acara
+                ctx.fillStyle = '#3B2219';
+                ctx.font = '28px Georgia, serif';
+                ctx.fillText('Yang insyaAllah akan dilaksanakan pada:', W / 2, 1085);
+
+                ctx.fillStyle = '#FFFDF9';
+                ctx.strokeStyle = '#9C7230';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.roundRect(140, 1115, W - 280, 355, 24);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#9C7230';
+                ctx.font = 'bold 20px sans-serif';
+                ctx.fillText('H A R I  /  T A N G G A L', W / 2, 1162);
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'bold 34px Georgia, serif';
+                ctx.fillText('Kamis, 19 November 2026', W / 2, 1205);
+
+                ctx.fillStyle = '#9C7230';
+                ctx.font = 'bold 20px sans-serif';
+                ctx.fillText('W A K T U', W / 2, 1272);
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'bold 34px Georgia, serif';
+                ctx.fillText('Pukul 18.00 WIB s/d Selesai', W / 2, 1315);
+
+                ctx.fillStyle = '#9C7230';
+                ctx.font = 'bold 20px sans-serif';
+                ctx.fillText('T E M P A T', W / 2, 1380);
+                ctx.fillStyle = '#761C1C';
+                ctx.font = 'bold 31px Georgia, serif';
+                ctx.fillText('Kediaman Ibu Lisa, Desa Keringan, Suratmajan', W / 2, 1425);
+
+                // 8. Penutup
+                ctx.fillStyle = '#3B2219';
+                ctx.font = '27px Georgia, serif';
+                ctx.fillText('Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila', W / 2, 1545);
+                ctx.fillText('Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.', W / 2, 1584);
+
+                ctx.fillStyle = '#24140E';
+                ctx.font = 'bold 34px Georgia, serif';
+                ctx.fillText('Wassalamu’alaikum Warahmatullahi Wabarakatuh', W / 2, 1650);
+
+                ctx.fillStyle = '#3B2219';
+                ctx.font = 'italic 27px Georgia, serif';
+                ctx.fillText('Hormat kami yang berbahagia,', W / 2, 1725);
+
+                ctx.fillStyle = '#761C1C';
+                ctx.font = 'bold 36px Georgia, serif';
+                ctx.fillText('Keluarga Bapak Denny & Ibu Lisa', W / 2, 1775);
+
+                // Unduh file PNG
+                const link = document.createElement('a');
+                const safeSlug = currentGuestName.trim()
+                    ? '_' + currentGuestName.trim().replace(/[^a-zA-Z0-9]/g, '_')
+                    : '';
+                link.download = `Undangan_Jashen_Arxean_Hans_Tefa${safeSlug}.png`;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast('Kartu undangan gambar (.PNG) berhasil diunduh!');
+            });
+
+            // =================================================================
+            // F. COUNTDOWN TIMER MENUJU KAMIS, 19 NOVEMBER 2026 PUKUL 18.00 WIB
+            // =================================================================
+            const eventTimestamp = new Date('2026-11-19T18:00:00+07:00').getTime();
+
+            function refreshCountdown() {
+                const now = Date.now();
+                const diff = eventTimestamp - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cd-days').textContent = '00';
+                    document.getElementById('cd-hours').textContent = '00';
+                    document.getElementById('cd-minutes').textContent = '00';
+                    document.getElementById('cd-seconds').textContent = '00';
+                    document.getElementById('cd-status-msg').classList.remove('hidden');
+                    return;
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+                document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+                document.getElementById('cd-minutes').textContent = String(m).padStart(2, '0');
+                document.getElementById('cd-seconds').textContent = String(s).padStart(2, '0');
+            }
+
+            refreshCountdown();
+            setInterval(refreshCountdown, 1000);
+
+            // =================================================================
+            // G. SIMPAN KE KALENDER (.ICS)
+            // =================================================================
+            document.getElementById('btn-save-calendar').addEventListener('click', () => {
+                // 19 November 2026 pukul 18.00 WIB = 11.00 UTC
+                const icsData = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'PRODID:-//Undangan Digital Jawa Madiun//Jashen Arxean Hans Tefa//ID',
+                    'BEGIN:VEVENT',
+                    'DTSTART:20261119T110000Z',
+                    'DTEND:20261119T150000Z',
+                    'SUMMARY:Tasyakuran Aqiqah & Tedak Siten - Jashen Arxean Hans Tefa',
+                    'LOCATION:Kediaman Ibu Lisa, Desa Keringan, Suratmajan',
+                    'DESCRIPTION:Undangan Tasyakuran Aqiqah serta prosesi Tedak Siten Jashen Arxean Hans Tefa (Putra dari Bapak Denny & Ibu Lisa).',
+                    'END:VEVENT',
+                    'END:VCALENDAR'
+                ].join('\r\n');
+
+                const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'Undangan_Aqiqah_Tedak_Siten_Jashen.ics';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showToast('Jadwal acara (.ics) berhasil diunduh!');
+            });
+
+            // =================================================================
+            // H. BUKU TAMU & UCAPAN DOA RESTU INTERAKTIF
+            // =================================================================
+            const initialWishes = [];
+
+            let wishesList = [...initialWishes];
+            try {
+                const stored = localStorage.getItem('wishes_jashen_madiun_v2');
+                if (stored) wishesList = JSON.parse(stored);
+            } catch (err) {}
+
+            function escapeHtml(text) {
+                return text.replace(/[&<>"']/g, ch => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[ch]));
+            }
+
+            function renderWishesList() {
+                const container = document.getElementById('wishes-container');
+                const counter = document.getElementById('wishes-counter');
+                counter.textContent = `${wishesList.length} Ucapan`;
+
+                container.innerHTML = wishesList.map(item => {
+                    const isHadir = item.status === 'Hadir';
+                    const badgeStyle = isHadir
+                        ? 'bg-emerald-900/10 text-emerald-900 border-emerald-800/30'
+                        : 'bg-amber-900/10 text-amber-900 border-amber-800/30';
+                    const badgeLabel = isHadir ? '✓ InsyaAllah Hadir' : '• Berhalangan';
+
+                    return `
+                        <div class="bg-ivory-pure border border-gold/45 rounded-2xl p-4 shadow-sm">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                <span class="font-serif font-bold text-lg text-sogan">${escapeHtml(item.name)}</span>
+                                <span class="font-sans text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${badgeStyle}">${badgeLabel}</span>
+                            </div>
+                            <p class="font-serif text-base text-sogan/90 leading-relaxed">${escapeHtml(item.message)}</p>
+                            <span class="block font-sans text-[10px] text-gold mt-2">${escapeHtml(item.time)}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderWishesList();
+
+            // Isi otomatis nama pengirim ucapan jika parameter tamu tersedia
+            if (currentGuestName.trim()) {
+                document.getElementById('wish-name').value = currentGuestName.trim();
+            }
+
+            document.getElementById('wishes-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameEl = document.getElementById('wish-name');
+                const statusEl = document.getElementById('wish-status');
+                const msgEl = document.getElementById('wish-message');
+
+                const nameVal = nameEl.value.trim();
+                const statusVal = statusEl.value;
+                const msgVal = msgEl.value.trim();
+
+                if (!nameVal || !msgVal) return;
+
+                wishesList.unshift({
+                    name: nameVal,
+                    status: statusVal,
+                    message: msgVal,
+                    time: 'Baru saja'
+                });
+
+                try {
+                    localStorage.setItem('wishes_jashen_madiun_v2', JSON.stringify(wishesList));
+                } catch (err) {}
+
+                renderWishesList();
+                nameEl.value = '';
+                msgEl.value = '';
+                showToast('Terima kasih! Doa restu Anda telah tercatat.');
+            });
+
+            // =================================================================
+            // I. HELPER NOTIFIKASI TOAST
+            // =================================================================
+            let toastTimer;
+            function showToast(message) {
+                const box = document.getElementById('toast-box');
+                const text = document.getElementById('toast-text');
+                text.textContent = message;
+                box.classList.remove('opacity-0', '-translate-y-3');
+                box.classList.add('opacity-100', 'translate-y-0');
+
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    box.classList.remove('opacity-100', 'translate-y-0');
+                    box.classList.add('opacity-0', '-translate-y-3');
+                }, 3200);
+            }
+        });
+    </script>
+</body>
+</html>
